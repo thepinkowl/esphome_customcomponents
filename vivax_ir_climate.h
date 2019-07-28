@@ -17,12 +17,12 @@ class VivaxInfraredClimate : public Component, public Climate {
 public:
     remote_transmitter::RemoteTransmitterComponent *remote_transmitter_remotetransmittercomponent;
 
+    VivaxInfraredClimate(remote_transmitter::RemoteTransmitterComponent *rt) {
+        remote_transmitter_remotetransmittercomponent = rt;
+    }
+
     void setup() override {
         // This will be called by App.setup()
-
-        remote_transmitter_remotetransmittercomponent = new remote_transmitter::RemoteTransmitterComponent(
-                new GPIOPin(4, OUTPUT, false));
-        remote_transmitter_remotetransmittercomponent->set_carrier_duty_percent(50);
     }
 
     ClimateTraits traits() override {

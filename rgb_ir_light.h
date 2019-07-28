@@ -17,6 +17,10 @@ public:
     remote_transmitter::RemoteTransmitterComponent *remote_transmitter_remotetransmittercomponent;
     NECAction actions[15];
 
+    RGBInfraredLightOutput(remote_transmitter::RemoteTransmitterComponent *rt) {
+        remote_transmitter_remotetransmittercomponent = rt;
+    }
+
     float Min(float a, float b) {
         return a <= b ? a : b;
     }
@@ -26,9 +30,6 @@ public:
     }
 
     void setup() override {
-        remote_transmitter_remotetransmittercomponent = new remote_transmitter::RemoteTransmitterComponent(
-                new GPIOPin(4, OUTPUT, false));
-        remote_transmitter_remotetransmittercomponent->set_carrier_duty_percent(50);
 
         uint16_t buttons[16] = {
                 0x906F, // 0  RED
